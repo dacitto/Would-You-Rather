@@ -1,5 +1,20 @@
-function App() {
-  return <h1>Hello</h1>;
+import { connect } from "react-redux";
+import { handleInitialData } from "../actions/shared";
+import React, { Component } from "react";
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData());
+  }
+
+  render() {
+    return <div>Helllo</div>;
+  }
 }
 
-export default App;
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    loading: authedUser === null,
+  };
+};
+
+export default connect(mapStateToProps)(App);
