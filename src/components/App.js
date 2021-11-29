@@ -5,7 +5,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import { handleInitialData } from "../actions/shared";
 import { Routes, Route, Navigate } from "react-router-dom";
-
+import { ProtectedRoutes, routes } from "../navigation/routes";
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -14,15 +14,19 @@ const App = () => {
   let authedUser = localStorage.getItem("authedUser");
   return (
     <Routes>
-      {!authedUser && <Route path="/login" element={<Login />} />}
-      <Route
-        path="/"
-        element={authedUser ? <Home /> : <Navigate to="/login" replace />}
-      />
-      <Route
-        path="/about"
-        element={authedUser ? <About /> : <Navigate to="/login" replace />}
-      />
+      {!authedUser
+        ? routes.map((route) => (
+            <Route key={route.id} path={route.path} element={route.component} />
+          ))
+        : ProtectedRoutes.map((route) => (
+            <Route
+              key={route.id}
+              path={route.path}
+              element={
+                authedUser ? route.component : <Navigate to="/login" replace />
+              }
+            />
+          ))}
     </Routes>
   );
 };
