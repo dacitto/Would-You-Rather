@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { setAuthedUser } from "../../actions/authedUser";
+import { useNavigate } from "react-router";
 const Login = () => {
+  const navigate = useNavigate();
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
   const [userID, setUserID] = useState("");
@@ -25,6 +27,8 @@ const Login = () => {
           className="bg-blue-500 text-white capitalize rounded"
           onClick={() => {
             dispatch(setAuthedUser(userID));
+            localStorage.setItem("authedUser", JSON.stringify(userID));
+            navigate("/");
           }}
           disabled={userID ? false : true}
         >
