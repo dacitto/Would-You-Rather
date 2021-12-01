@@ -16,7 +16,7 @@ const Login = () => {
             setUserID(e.target.value);
           }}
         >
-          <option></option>
+          <option value="">Please select a user to login</option>
           {Object.values(users).map((user) => (
             <option value={user.id} key={user.id}>
               {user.name}
@@ -26,9 +26,11 @@ const Login = () => {
         <button
           className="bg-blue-500 text-white capitalize rounded"
           onClick={() => {
-            dispatch(setAuthedUser(userID));
-            localStorage.setItem("authedUser", JSON.stringify(userID));
-            navigate("/");
+            if (userID) {
+              dispatch(setAuthedUser(userID));
+              localStorage.setItem("authedUser", JSON.stringify(userID));
+              navigate("/");
+            }
           }}
           disabled={userID ? false : true}
         >

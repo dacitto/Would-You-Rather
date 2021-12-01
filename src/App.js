@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import Header from "./components/Header";
 import { handleInitialData } from "./actions/shared";
 import { Routes, Route, Navigate } from "react-router-dom";

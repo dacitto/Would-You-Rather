@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 const Header = () => {
+  const [active, setActive] = useState("/");
+  const activeClasses = "font-bold underline";
   return (
-    <header className="w-full py-5 bg-blue-900">
-      <nav className="container mx-auto text-white w-full flex justify-center text-lg">
+    <header className="w-full py-5 bg-indigo-800">
+      <nav className="container mx-auto text-indigo-50 w-full flex justify-center text-lg">
         <span className="flex gap-4">
-          <Link to="/">Home</Link>
-          <Link to="/">Leader board</Link>
-          <Link to="/">Home</Link>
+          <Link
+            to="/"
+            className={active === "/" ? activeClasses : ""}
+            onClick={() => {
+              setActive("/");
+            }}
+          >
+            Home
+          </Link>
+          <Link
+            to="/about"
+            onClick={() => {
+              setActive("/about");
+            }}
+            className={active === "/about" ? activeClasses : ""}
+          >
+            Leader board
+          </Link>
         </span>
       </nav>
     </header>
