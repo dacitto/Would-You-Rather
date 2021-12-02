@@ -18,14 +18,14 @@ const Home = () => {
   const questions = useSelector((state) => state.questions);
   const authed = JSON.parse(localStorage.getItem("authedUser"));
   const answeredIds = users[authed] ? Object.keys(users[authed].answers) : [];
-  const [answered, setAnswered] = useState(true);
+  const [answered, setAnswered] = useState(false);
   return (
-    <main className=" bg-white">
+    <main className="bg-white">
       <div className="container max-w-lg mx-auto p-5">
         <div className="flex justify-between font-bold text-indigo-800 overflow-hidden mb-6 rounded-xl bg-indigo-100 ">
           <div
             className={`capitalize text-center w-full p-4 cursor-pointer ${
-              !answered ? "bg-purple-700 text-white" : ""
+              !answered ? "bg-indigo-700 text-white" : ""
             }`}
             onClick={() => setAnswered(false)}
           >
@@ -33,7 +33,7 @@ const Home = () => {
           </div>
           <div
             className={`capitalize text-center w-full p-4 cursor-pointer ${
-              answered ? "bg-purple-700 text-white" : ""
+              answered ? "bg-indigo-700 text-white" : ""
             }`}
             onClick={() => setAnswered(true)}
           >

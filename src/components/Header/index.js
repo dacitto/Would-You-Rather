@@ -17,11 +17,11 @@ const Header = () => {
             Home
           </Link>
           <Link
-            to="/about"
+            to="/leaders"
             onClick={() => {
-              setActive("/about");
+              setActive("/leaders");
             }}
-            className={active === "/about" ? activeClasses : ""}
+            className={active === "/leaders" ? activeClasses : ""}
           >
             Leader board
           </Link>
