@@ -55,7 +55,7 @@ const Home = () => {
                     <img
                       src={
                         users[question.author]
-                          ? "./profiles/" + users[question.author].avatarURL
+                          ? `/profiles/${users[question.author].avatarURL}`
                           : "nothing"
                       }
                       alt="profile"
