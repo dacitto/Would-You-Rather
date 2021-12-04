@@ -31,7 +31,7 @@ const Leaders = () => {
             })
             .map((user) => (
               <li
-                key={users.id}
+                key={user.id}
                 className="flex px-5 p-5 gap-4 items-center bg-indigo-50 rounded-xl shadow-lg text-indigo-900"
               >
                 <h2 className="items-center text-4xl">#{placement++}</h2>

@@ -6,14 +6,6 @@ import { Link } from "react-router-dom";
 import users from "../reducers/users.js";
 const Home = () => {
   const [answerredQuestions, setAnswerredQuestions] = useState({});
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    _getQuestions().then((questions) => {
-      dispatch(receiveQuestions(questions));
-    });
-  }, []);
-
   const users = useSelector((state) => state.users);
   const questions = useSelector((state) => state.questions);
   const authed = JSON.parse(localStorage.getItem("authedUser"));
@@ -76,9 +68,12 @@ const Home = () => {
                     </h2>
                     <h3>1- {question.optionOne.text}</h3>
                     <h3 className="mb-4">2- {question.optionTwo.text}</h3>
-                    <a className="capitalize w-full block text-center font-bold bg-indigo-50 hover:bg-green-400 hover:text-green-50 p-1 border-2 border-green-400 cursor-pointer rounded-md text-green-400">
+                    <Link
+                      to={`/question/${question.id}`}
+                      className="capitalize w-full block text-center font-bold bg-indigo-50 hover:bg-green-400 hover:text-green-50 p-1 border-2 border-green-400 cursor-pointer rounded-md text-green-400"
+                    >
                       view poll
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </li>
