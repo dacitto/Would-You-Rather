@@ -48,11 +48,9 @@ const Question = () => {
                     <div className="h-2 rounded-lg  bg-white">
                       <div
                         className="h-2 mt-2 rounded-lg bg-indigo-700"
-                        style={
-                          votes > 0
-                            ? { width: (vote2 / votes) * 100 + "%" }
-                            : { width: 0 }
-                        }
+                        style={{
+                          width: votes > 0 ? `${(vote1 / votes) * 100}%` : 0,
+                        }}
                       ></div>
                     </div>
                     <div className="h-2 rounded-lg w-min ml-auto ">
@@ -65,11 +63,9 @@ const Question = () => {
                     <div className="h-2 rounded-lg  bg-white">
                       <div
                         className="h-2 mt-2 rounded-lg bg-indigo-700"
-                        style={
-                          votes > 0
-                            ? { width: (vote2 / votes) * 100 + "%" }
-                            : { width: 0 }
-                        }
+                        style={{
+                          width: votes > 0 ? `${(vote2 / votes) * 100}%` : 0,
+                        }}
                       ></div>
                     </div>
                     <div className="h-2 rounded-lg w-min ml-auto ">
