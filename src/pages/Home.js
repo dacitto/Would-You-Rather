@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { _getQuestions } from "../utils/_DATA.js";
-import { receiveQuestions } from "../actions/questions";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import users from "../reducers/users.js";
+
 const Home = () => {
-  const [answerredQuestions, setAnswerredQuestions] = useState({});
   const users = useSelector((state) => state.users);
   const questions = useSelector((state) => state.questions);
   const authed = JSON.parse(localStorage.getItem("authedUser"));

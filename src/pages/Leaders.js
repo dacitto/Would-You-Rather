@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { _getUsers } from "../utils/_DATA.js";
-import { receiveUsers } from "../actions/users";
+import React from "react";
+import { useSelector } from "react-redux";
 import { AiFillStar } from "react-icons/ai";
-const Leaders = () => {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    _getUsers().then((users) => {
-      dispatch(receiveUsers(users));
-    });
-  }, []);
+const Leaders = () => {
   const users = useSelector((state) => state.users);
   let placement = 1;
   return (
