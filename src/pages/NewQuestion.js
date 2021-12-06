@@ -1,6 +1,14 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { handleQuestion } from "../actions/questions";
+import { useDispatch, useSelector } from "react-redux";
+import Option from "../components/NewQuestion/Option";
 const NewQuestion = () => {
+  const dispatch = useDispatch();
+  const authedUser = useSelector((state) => state.authedUser);
+  const [option1, setOption1] = useState("");
+  const [option2, setOption2] = useState("");
+  console.log(option1);
+  console.log(option2);
   return (
     <main className="bg-white">
       <div className="container max-w-lg mx-auto p-5">
@@ -11,19 +19,17 @@ const NewQuestion = () => {
           <h2 className="capitalize text-xl text-indigo-800 font-semibold">
             would you rather
           </h2>
-          <input
-            type="text"
-            name="choice1"
-            className="w-full p-3 rounded-lg shadow-x border-2 capitalize"
-            placeholder="choice One"
-          />
-          <input
-            type="text"
-            name="choice2"
-            className="w-full p-3 rounded-lg shadow-x border-2 capitalize"
-            placeholder="choice Two"
-          />
-          <button className="bg-indigo-800 text-indigo-50 w-max p-3 rounded-lg ml-auto">
+          <Option placeholder="Choice one" setOption={setOption1} />
+          <Option placeholder="Choice Two" setOption={setOption2} />
+
+          <button
+            className="bg-indigo-800 text-indigo-50 w-max p-3 rounded-lg ml-auto"
+            onClick={() => {
+              if (option1 && option2) {
+                dispatch(handleQuestion("daci", "salah", authedUser));
+              }
+            }}
+          >
             Add New Question
           </button>
         </div>

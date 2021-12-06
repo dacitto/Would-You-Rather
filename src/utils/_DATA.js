@@ -115,7 +115,7 @@ let questions = {
   },
 };
 
-function generateUID() {
+export function generateUID() {
   return (
     Math.random().toString(36).substring(2, 15) +
     Math.random().toString(36).substring(2, 15)
@@ -160,7 +160,7 @@ export function _saveQuestion(question) {
         ...questions,
         [formattedQuestion.id]: formattedQuestion,
       };
-
+      console.log(questions);
       users = {
         ...users,
         [authedUser]: {
