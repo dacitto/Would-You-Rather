@@ -1,7 +1,6 @@
 import { _saveQuestionAnswer } from "../utils/_DATA";
 import { _saveQuestion } from "../utils/_DATA";
-import { generateUID } from "../utils/_DATA";
-
+import { addQuestionToUser } from "./users";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 export const ANSWER_QUESTION = "ANSWER_QUESTION";
 export const ADD_QUESTION = "ADD_QUESTION";
@@ -41,6 +40,7 @@ export const handleQuestion = (optionOneText, optionTwoText, author) => {
       (question) => {
         console.log("Question added");
         dispatch(addQuestion(question));
+        dispatch(addQuestionToUser(question));
       }
     );
   };
