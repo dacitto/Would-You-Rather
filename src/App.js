@@ -5,13 +5,13 @@ import { handleInitialData } from "./actions/shared";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { routes, protectedRoutes } from "./navigation/routes";
 import PrivateRoute from "./navigation/PrivateRoute";
-
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(handleInitialData());
-  }, [useSelector((state) => state.questions)]);
+    console.log("app rerender");
+  }, []);
   let authedUser = localStorage.getItem("authedUser");
   return (
     <Routes>
