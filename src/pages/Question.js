@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import Vote from "../components/Vote";
 const Question = () => {
-  const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
   const authed = JSON.parse(localStorage.getItem("authedUser"));
   const { id } = useParams();
@@ -43,35 +43,20 @@ const Question = () => {
                   <h2 className="text-lg font-bold capitalize">
                     would you rather
                   </h2>
-                  <div className="w-full bg-indigo-100 px-2 py-5 rounded-lg">
-                    <h3 className="">{question.optionOne.text}</h3>
-                    <div className="h-2 rounded-lg  bg-white">
-                      <div
-                        className="h-2 mt-2 rounded-lg bg-indigo-700"
-                        style={{
-                          width: votes > 0 ? `${(vote1 / votes) * 100}%` : 0,
-                        }}
-                      ></div>
-                    </div>
-                    <div className="h-2 rounded-lg w-min ml-auto ">
-                      {vote1}/{votes}
-                    </div>
-                  </div>
-
-                  <div className="w-full bg-indigo-100 px-2 py-5 rounded-lg">
-                    <h3 className="">{question.optionTwo.text}</h3>
-                    <div className="h-2 rounded-lg  bg-white">
-                      <div
-                        className="h-2 mt-2 rounded-lg bg-indigo-700"
-                        style={{
-                          width: votes > 0 ? `${(vote2 / votes) * 100}%` : 0,
-                        }}
-                      ></div>
-                    </div>
-                    <div className="h-2 rounded-lg w-min ml-auto ">
-                      {vote2}/{votes}
-                    </div>
-                  </div>
+                  <Vote
+                    vote={vote1}
+                    question={question}
+                    authed={authed}
+                    votes={votes}
+                    option="optionOne"
+                  ></Vote>
+                  <Vote
+                    vote={vote2}
+                    question={question}
+                    authed={authed}
+                    votes={votes}
+                    option="optionTwo"
+                  ></Vote>
 
                   <div className="w-full ">
                     <h1 className="text-xl w-max ml-auto">{votes} votes</h1>

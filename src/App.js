@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import { handleInitialData } from "./actions/shared";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -8,9 +8,10 @@ import PrivateRoute from "./navigation/PrivateRoute";
 
 const App = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(handleInitialData());
-  }, []);
+  }, [useSelector((state) => state.questions)]);
   let authedUser = localStorage.getItem("authedUser");
   return (
     <Routes>
