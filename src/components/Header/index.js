@@ -5,6 +5,7 @@ const Header = () => {
   const Links = [
     { path: "/", name: "Home" },
     { path: "/leaders", name: "Leaders" },
+    { path: "/newquestion", name: "New Question" },
   ];
   return (
     <header className="w-full py-5 bg-indigo-800">
