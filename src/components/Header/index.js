@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import MyLink from "./MyLink";
 import { useNavigate } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { setAuthedUser } from "../../actions/authedUser";
 const Header = () => {
+  const params = useLocation();
+  const dispatch = useDispatch();
   const authedUser = useSelector((state) => state.authedUser);
   const userInfos = useSelector((state) => state.users[authedUser]);
+  const pathname = params.pathname;
   const Navigate = useNavigate();
-  console.log("authedUser");
-  console.log(userInfos);
-  const [active, setActive] = useState("/");
+  const paths = ["/", "/leaders", "/newquestion"];
+  const [active, setActive] = useState(
+    paths.includes(pathname.toLocaleLowerCase())
+      ? pathname.toLocaleLowerCase()
+      : "/"
+  );
   const Links = [
     { path: "/", name: "Home" },
     { path: "/leaders", name: "Leaders" },
@@ -36,6 +44,7 @@ const Header = () => {
           <button
             onClick={() => {
               localStorage.clear();
+              dispatch(setAuthedUser(null));
               Navigate("/login");
             }}
             className="px-2 rounded-md border font-semibold border-indigo-100 hover:bg-indigo-50 hover:text-indigo-800 transition-all duration-300"
