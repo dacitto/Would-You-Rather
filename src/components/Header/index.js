@@ -17,6 +17,9 @@ const Header = () => {
   return (
     <header className="w-full py-5 bg-indigo-800">
       <nav className="container px-6 mx-auto text-indigo-50 w-full flex justify-between text-lg">
+        <span className="hidden md:block">
+          <h1 className="font-wyr text-2xl">Would You Rather</h1>
+        </span>
         <span className="flex gap-4">
           {Links.map((link) => (
             <MyLink
@@ -29,7 +32,7 @@ const Header = () => {
           ))}
         </span>
         <span className="flex gap-2">
-          <div>{userInfos.name.split(" ")[0]}</div>
+          <div>{userInfos ? userInfos.name.split(" ")[0] : ""}</div>
           <button
             onClick={() => {
               localStorage.clear();
