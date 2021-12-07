@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { AiFillStar } from "react-icons/ai";
+import Leader from "../components/Leaders/Leader";
 
 const Leaders = () => {
   const users = useSelector((state) => state.users);
-  let placement = 1;
+  let rank = 1;
   return (
     <main className="bg-white">
       <div className="container max-w-lg mx-auto p-5">
@@ -22,28 +22,7 @@ const Leaders = () => {
               return user2Points - user1Points;
             })
             .map((user) => (
-              <li
-                key={user.id}
-                className="flex px-5 p-5 gap-4 items-center bg-indigo-50 rounded-xl shadow-lg text-indigo-900"
-              >
-                <h2 className="items-center text-4xl">#{placement++}</h2>
-
-                <img
-                  src={
-                    user.avatarURL ? "./profiles/" + user.avatarURL : "nothing"
-                  }
-                  alt="profile"
-                  className=" object-cover h-16 w-16 border-2 rounded-full bg-indigo-500"
-                ></img>
-
-                <h1 className="text-lg font-bold">{user.name}</h1>
-                <div className="flex ml-auto  items-center">
-                  <h2 className="font-bold capitalize text-5xl">
-                    {Object.keys(user.answers).length + user.questions.length}{" "}
-                  </h2>
-                  <AiFillStar className="text-yellow-400 text-4xl " />
-                </div>
-              </li>
+              <Leader user={user} rank={rank++} />
             ))}
         </ul>
       </div>
