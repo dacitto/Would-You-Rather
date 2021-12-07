@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
+
   const questions = useSelector((state) => state.questions);
   //useEffect(() => {}, [questions, users, dispatch]);
   const authed = JSON.parse(localStorage.getItem("authedUser"));

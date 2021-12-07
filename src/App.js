@@ -7,12 +7,11 @@ import { routes, protectedRoutes } from "./navigation/routes";
 import PrivateRoute from "./navigation/PrivateRoute";
 const App = () => {
   const dispatch = useDispatch();
-
+  const authedUser = useSelector((state) => state.authedUser);
   useEffect(() => {
     dispatch(handleInitialData());
     console.log("app rerender");
   }, []);
-  let authedUser = localStorage.getItem("authedUser");
   return (
     <Routes>
       {routes.map((route) => (
