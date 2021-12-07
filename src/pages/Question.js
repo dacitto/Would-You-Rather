@@ -1,8 +1,10 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { BiArrowBack } from "react-icons/bi";
 import Vote from "../components/Vote";
 const Question = () => {
+  const navigate = useNavigate();
   const users = useSelector((state) => state.users);
   const authed = JSON.parse(localStorage.getItem("authedUser"));
   const { id } = useParams();
@@ -58,7 +60,16 @@ const Question = () => {
                     option="optionTwo"
                   ></Vote>
 
-                  <div className="w-full ">
+                  <div className="w-full flex items-center">
+                    <button
+                      className="bg-indigo-200 py-1 px-4 flex items-center gap-2 rounded-md text-indigo-800 font-semibold"
+                      onClick={() => {
+                        navigate(-1);
+                      }}
+                    >
+                      <BiArrowBack />
+                      Back
+                    </button>
                     <h1 className="text-xl w-max ml-auto">{votes} votes</h1>
                   </div>
                 </div>
