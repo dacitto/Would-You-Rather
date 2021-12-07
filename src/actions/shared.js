@@ -3,7 +3,7 @@ import { _getQuestions } from "../utils/_DATA.js";
 import { receiveUsers } from "./users";
 import { receiveQuestions } from "./questions";
 import { setAuthedUser } from "./authedUser";
-//const AUTHED_ID = "tylermcginnis";
+
 export const handleInitialData = () => {
   return async (dispatch) => {
     const users = await _getUsers();

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { setAuthedUser } from "../../actions/authedUser";
 import { BiCrown, BiQuestionMark, BiHome } from "react-icons/bi";
+
 const Header = () => {
   const params = useLocation();
   const dispatch = useDispatch();
