@@ -24,13 +24,13 @@ const NewQuestion = () => {
           <Option placeholder="Choice Two" setOption={setOption2} />
           <div className="w-full flex gap-2">
             <button
-              className="bg-indigo-50 text-indigo-800 p-2 font-semibold rounded-lg ml-auto"
+              className="bg-indigo-50 text-indigo-800 py-2 px-6 font-semibold rounded-lg ml-auto"
               onClick={() => Navigate("/")}
             >
               Cancel
             </button>
             <button
-              className="bg-indigo-800 text-indigo-50  p-2 font-semibold rounded-lg"
+              className="bg-indigo-800 text-indigo-50  py-2 px-6 font-semibold rounded-lg"
               onClick={() => {
                 if (option1 && option2) {
                   dispatch(handleQuestion(option1, option2, authedUser));
