@@ -30,7 +30,9 @@ const NewQuestion = () => {
               Cancel
             </button>
             <button
-              className="bg-indigo-800 text-indigo-50  py-2 px-6 font-semibold rounded-lg"
+              className={`text-indigo-50 transition-all duration-300  py-2 px-6 font-semibold rounded-lg ${
+                option1 && option2 ? "bg-indigo-800" : "bg-indigo-400"
+              }`}
               onClick={() => {
                 if (option1 && option2) {
                   dispatch(handleQuestion(option1, option2, authedUser));
