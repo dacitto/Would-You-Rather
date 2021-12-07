@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { setAuthedUser } from "../../actions/authedUser";
+import { BiCrown, BiQuestionMark, BiHome } from "react-icons/bi";
 const Header = () => {
   const params = useLocation();
   const dispatch = useDispatch();
@@ -18,9 +19,9 @@ const Header = () => {
       : "/"
   );
   const Links = [
-    { path: "/", name: "Home" },
-    { path: "/leaders", name: "Leaders" },
-    { path: "/newquestion", name: "New Question" },
+    { path: "/", name: "Home", icon: <BiHome /> },
+    { path: "/leaders", name: "Leaders", icon: <BiCrown /> },
+    { path: "/newquestion", name: "New Question", icon: <BiQuestionMark /> },
   ];
   return (
     <header className="w-full py-5 bg-indigo-800">
@@ -34,6 +35,7 @@ const Header = () => {
               key={link.name}
               path={link.path}
               name={link.name}
+              icon={link.icon}
               setActive={setActive}
               active={active}
             />
