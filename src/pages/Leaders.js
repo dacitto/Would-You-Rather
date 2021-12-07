@@ -22,7 +22,7 @@ const Leaders = () => {
               return user2Points - user1Points;
             })
             .map((user) => (
-              <Leader user={user} rank={rank++} />
+              <Leader key={user.id} user={user} rank={rank++} />
             ))}
         </ul>
       </div>
