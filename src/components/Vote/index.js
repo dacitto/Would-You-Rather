@@ -8,7 +8,7 @@ const Vote = ({ question, authed, vote, votes, option }) => {
       onClick={
         !question["optionOne"].votes.includes(authed) &&
         !question["optionTwo"].votes.includes(authed)
-          ? () => dispatch(handleAnswer(question.id, option))
+          ? () => dispatch(handleAnswer(question.id, option, authed))
           : null
       }
       className={`w-full bg-indigo-100 px-2 py-5 rounded-lg cursor-pointer ${

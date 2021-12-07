@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
   const questions = useSelector((state) => state.questions);
+  //useEffect(() => {}, [questions, users, dispatch]);
   const authed = JSON.parse(localStorage.getItem("authedUser"));
   const answeredIds = users[authed] ? Object.keys(users[authed].answers) : [];
   const [answered, setAnswered] = useState(false);
+
   return (
     <main className="bg-white">
       <div className="container max-w-lg mx-auto p-5">

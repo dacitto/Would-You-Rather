@@ -18,9 +18,8 @@ export const addAnswer = ({ qid, authedUser, answer }) => {
     answer,
   };
 };
-export const handleAnswer = (qid, answer) => {
-  return (dispatch, getState) => {
-    const { authedUser } = getState();
+export const handleAnswer = (qid, answer, authedUser) => {
+  return (dispatch) => {
     return _saveQuestionAnswer({ qid, authedUser, answer }).then(() => {
       console.log("answer added");
       dispatch(addAnswer({ qid, authedUser, answer }));
