@@ -8,6 +8,7 @@ In your app, users will be able to answer questions, see which questions they ha
 
 ![](https://github.com/dacitto/Would-You-Rather/blob/main/readme/screenshot1.png)
 ![](https://github.com/dacitto/Would-You-Rather/blob/main/readme/screenshot2.png)
+
 # Technologies used in project
 
 - React
@@ -31,4 +32,4 @@ open the project directory with cmd, then you can run the following commands:
 
 3- run the next commend to start server.
 
-`npm start` the server will run in [http://localhost:3000](http://localhost:3000/).
+`npm start` the server will run in [http://localhost:3006](http://localhost:3006/).
