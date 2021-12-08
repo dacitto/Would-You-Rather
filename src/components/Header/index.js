@@ -13,7 +13,7 @@ const Header = () => {
   const userInfos = useSelector((state) => state.users[authedUser]);
   const pathname = params.pathname;
   const Navigate = useNavigate();
-  const paths = ["/", "/leaders", "/newquestion"];
+  const paths = ["/", "/leaderboard", "/add"];
   const [active, setActive] = useState(
     paths.includes(pathname.toLocaleLowerCase())
       ? pathname.toLocaleLowerCase()
@@ -21,8 +21,8 @@ const Header = () => {
   );
   const Links = [
     { path: "/", name: "Home", icon: <BiHome /> },
-    { path: "/leaders", name: "Leaders", icon: <BiCrown /> },
-    { path: "/newquestion", name: "New Question", icon: <BiQuestionMark /> },
+    { path: "/leaderboard", name: "Leaders", icon: <BiCrown /> },
+    { path: "/add", name: "New Question", icon: <BiQuestionMark /> },
   ];
   return (
     <header className="w-full py-5 bg-indigo-800">
