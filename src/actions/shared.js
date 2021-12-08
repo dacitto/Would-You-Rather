@@ -11,12 +11,5 @@ export const handleInitialData = () => {
     dispatch(receiveUsers(users));
     dispatch(receiveQuestions(questions));
     dispatch(setAuthedUser(JSON.parse(localStorage.getItem("authedUser"))));
-
-    /*
-    .then((users) => {
-      dispatch(receiveUsers(users));
-      dispatch(setAuthedUser(JSON.parse(localStorage.getItem("authedUser"))));
-    });
-    */
   };
 };
