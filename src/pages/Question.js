@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BiArrowBack } from "react-icons/bi";
@@ -9,7 +9,7 @@ const Question = () => {
   const users = useSelector((state) => state.users);
   const authed = JSON.parse(localStorage.getItem("authedUser"));
   const { id } = useParams();
-
+  const [voted, setVoted] = useState(false);
   const questions = useSelector((state) => state.questions);
   const question = useSelector((state) => state.questions[id]);
   const vote1 = question ? question.optionOne.votes.length : 0;
@@ -53,6 +53,8 @@ const Question = () => {
                     question={question}
                     authed={authed}
                     votes={votes}
+                    voted={voted}
+                    setVoted={setVoted}
                     option="optionOne"
                   ></Vote>
                   <Vote
@@ -61,6 +63,8 @@ const Question = () => {
                     authed={authed}
                     votes={votes}
                     option="optionTwo"
+                    voted={voted}
+                    setVoted={setVoted}
                   ></Vote>
 
                   <div className="w-full flex items-center">

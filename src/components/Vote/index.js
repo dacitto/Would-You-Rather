@@ -1,14 +1,18 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { handleAnswer } from "../../actions/questions";
-const Vote = ({ question, authed, vote, votes, option }) => {
+const Vote = ({ question, authed, vote, votes, option, voted, setVoted }) => {
   const dispatch = useDispatch();
   return (
     <div
       onClick={
         !question["optionOne"].votes.includes(authed) &&
-        !question["optionTwo"].votes.includes(authed)
-          ? () => dispatch(handleAnswer(question.id, option, authed))
+        !question["optionTwo"].votes.includes(authed) &&
+        !voted
+          ? () => {
+              setVoted(true);
+              dispatch(handleAnswer(question.id, option, authed));
+            }
           : null
       }
       className={`w-full bg-indigo-100 px-2 py-5 rounded-lg cursor-pointer ${
@@ -27,7 +31,7 @@ const Vote = ({ question, authed, vote, votes, option }) => {
         ></div>
       </div>
       <div className="h-2 rounded-lg w-min ml-auto">
-        {votes ? ((vote / votes) * 100).toFixed(2) : 0}%
+        {votes ? ((vote / votes) * 100).toFixed(1) : 0}%
       </div>
     </div>
   );
