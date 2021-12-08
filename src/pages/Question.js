@@ -10,10 +10,12 @@ const Question = () => {
   const authed = JSON.parse(localStorage.getItem("authedUser"));
   const { id } = useParams();
 
+  const questions = useSelector((state) => state.questions);
   const question = useSelector((state) => state.questions[id]);
   const vote1 = question ? question.optionOne.votes.length : 0;
   const vote2 = question ? question.optionTwo.votes.length : 0;
   const votes = vote1 + vote2;
+
   return (
     <main className="bg-white">
       <div className="container max-w-lg mx-auto p-5">
@@ -78,7 +80,8 @@ const Question = () => {
             </li>
           )}
           {console.log(question)}
-          {!question && <h1>Oooops there is no Question Here D:</h1>}
+          {questions && !question && navigate("/NoFound")}
+          {/*!question && <h1>Oooops there is no Question Here D:</h1>*/}
         </ul>
       </div>
     </main>
