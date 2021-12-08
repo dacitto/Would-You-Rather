@@ -12,7 +12,11 @@ const Leader = ({ user, rank }) => {
       <h2 className="items-center text-4xl">#{rank}</h2>
 
       <img
-        src={user.avatarURL ? "./profiles/" + user.avatarURL : "nothing"}
+        src={
+          user.avatarURL
+            ? "./profiles/" + user.avatarURL
+            : "/profiles/default.jpg"
+        }
         alt="profile"
         className=" object-cover h-16 w-16 border-2 rounded-full bg-indigo-500"
       ></img>

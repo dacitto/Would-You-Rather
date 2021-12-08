@@ -57,7 +57,7 @@ const Home = () => {
                       src={
                         users[question.author]
                           ? `/profiles/${users[question.author].avatarURL}`
-                          : "nothing"
+                          : "/profiles/default.jpg"
                       }
                       alt="profile"
                       className=" object-cover h-24 w-24 border-2 rounded-full bg-indigo-500"
