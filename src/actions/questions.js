@@ -22,7 +22,6 @@ export const addAnswer = ({ qid, authedUser, answer }) => {
 export const handleAnswer = (qid, answer, authedUser) => {
   return (dispatch) => {
     return _saveQuestionAnswer({ qid, authedUser, answer }).then(() => {
-      console.log("answer added");
       dispatch(addAnswer({ qid, authedUser, answer }));
       dispatch(addAnswerToUser({ qid, authedUser, answer }));
     });
@@ -39,7 +38,6 @@ export const handleQuestion = (optionOneText, optionTwoText, author) => {
   return (dispatch) => {
     return _saveQuestion({ optionOneText, optionTwoText, author }).then(
       (question) => {
-        console.log("Question added");
         dispatch(addQuestion(question));
         dispatch(addQuestionToUser(question));
       }

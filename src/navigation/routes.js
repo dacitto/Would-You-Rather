@@ -4,7 +4,6 @@ import Login from "../pages/Login";
 import Question from "../pages/Question";
 import NotFound from "../pages/NotFound";
 import NewQuestion from "../pages/NewQuestion";
-import { Navigate } from "react-router-dom";
 export const protectedRoutes = [
   { id: 1, path: "/", component: <Home /> },
   { id: 2, path: "/leaderboard", component: <Leaders /> },

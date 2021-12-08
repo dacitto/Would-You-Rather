@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BiArrowBack } from "react-icons/bi";
 import Vote from "../components/Vote";
-import questions from "../reducers/questions";
 const Question = () => {
   const navigate = useNavigate();
   const users = useSelector((state) => state.users);
@@ -83,9 +82,7 @@ const Question = () => {
               </div>
             </li>
           )}
-          {console.log(question)}
           {questions && !question && navigate("/NoFound")}
-          {/*!question && <h1>Oooops there is no Question Here D:</h1>*/}
         </ul>
       </div>
     </main>

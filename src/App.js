@@ -10,8 +10,7 @@ const App = () => {
   const authedUser = useSelector((state) => state.authedUser);
   useEffect(() => {
     dispatch(handleInitialData());
-    console.log("app rerender");
-  }, []);
+  }, [dispatch]);
   return (
     <Routes>
       {routes.map((route) => (
