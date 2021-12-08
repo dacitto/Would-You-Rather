@@ -6,6 +6,8 @@
 
 In your app, users will be able to answer questions, see which questions they haven’t answered, see how other people have voted, post questions, and see the ranking of users on the leaderboard.
 
+![](https://github.com/dacitto/Would-You-Rather/blob/main/readme/screenshot1.png)
+![](https://github.com/dacitto/Would-You-Rather/blob/main/readme/screenshot2.png)
 # Technologies used in project
 
 - React
