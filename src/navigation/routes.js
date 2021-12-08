@@ -7,9 +7,9 @@ import NewQuestion from "../pages/NewQuestion";
 import { Navigate } from "react-router-dom";
 export const protectedRoutes = [
   { id: 1, path: "/", component: <Home /> },
-  { id: 2, path: "/leaders", component: <Leaders /> },
+  { id: 2, path: "/leaderboard", component: <Leaders /> },
   { id: 9, path: "/question/:id", component: <Question /> },
-  { id: 9, path: "/newquestion", component: <NewQuestion /> },
+  { id: 9, path: "/add", component: <NewQuestion /> },
   { id: 3, path: "*", component: <NotFound /> },
 ];
 
