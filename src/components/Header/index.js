@@ -46,7 +46,7 @@ const Header = () => {
           <div>{userInfos ? userInfos.name.split(" ")[0] : ""}</div>
           <button
             onClick={() => {
-              localStorage.clear();
+              // localStorage.clear();
               dispatch(setAuthedUser(null));
               Navigate("/login");
             }}

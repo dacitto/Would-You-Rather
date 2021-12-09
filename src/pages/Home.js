@@ -7,7 +7,8 @@ const Home = () => {
 
   const questions = useSelector((state) => state.questions);
 
-  const authed = JSON.parse(localStorage.getItem("authedUser"));
+  //const authed = JSON.parse(localStorage.getItem("authedUser"));
+  const authed = useSelector((state) => state.authedUser);
   const answeredIds = users[authed] ? Object.keys(users[authed].answers) : [];
   const [answered, setAnswered] = useState(false);
 
