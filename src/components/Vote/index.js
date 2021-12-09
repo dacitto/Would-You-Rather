@@ -15,23 +15,29 @@ const Vote = ({ question, authed, vote, votes, option, voted, setVoted }) => {
             }
           : null
       }
-      className={`w-full bg-indigo-100 px-2 py-5 rounded-lg cursor-pointer ${
+      className={`w-full bg-indigo-100 pb-3 px-2 flex-shrink-0 rounded-lg cursor-pointer ${
         question[option].votes.includes(authed)
           ? "border-green-500 border-2"
           : ""
       }`}
     >
-      <h3 className="">{question[option].text}</h3>
+      <h3 className="my-2">{question[option].text}</h3>
       <div className="h-2 rounded-lg  bg-white">
         <div
-          className="h-2 mt-2 rounded-lg bg-indigo-700"
+          className="h-full rounded-lg bg-indigo-700"
           style={{
             width: votes > 0 ? `${(vote / votes) * 100}%` : 0,
           }}
         ></div>
       </div>
-      <div className="h-2 rounded-lg w-min ml-auto">
-        {votes ? ((vote / votes) * 100).toFixed(1) : 0}%
+      <div className="flex w-full my-2">
+        <div className="h-2 rounded-lg w-max flex font-light gap-2">
+          <b className="font-bold">{vote}</b> out of{" "}
+          <b className="font-bold">{votes}</b> votes
+        </div>
+        <div className="h-2 rounded-lg w-min ml-auto">
+          {votes ? ((vote / votes) * 100).toFixed(1) : 0}%
+        </div>
       </div>
     </div>
   );

@@ -48,25 +48,26 @@ const Question = () => {
                   <h2 className="text-lg font-bold capitalize">
                     would you rather
                   </h2>
-                  <Vote
-                    vote={vote1}
-                    question={question}
-                    authed={authed}
-                    votes={votes}
-                    voted={voted}
-                    setVoted={setVoted}
-                    option="optionOne"
-                  ></Vote>
-                  <Vote
-                    vote={vote2}
-                    question={question}
-                    authed={authed}
-                    votes={votes}
-                    option="optionTwo"
-                    voted={voted}
-                    setVoted={setVoted}
-                  ></Vote>
-
+                  <div className="flex-shrink-0 flex-col flex gap-3">
+                    <Vote
+                      vote={vote1}
+                      question={question}
+                      authed={authed}
+                      votes={votes}
+                      voted={voted}
+                      setVoted={setVoted}
+                      option="optionOne"
+                    ></Vote>
+                    <Vote
+                      vote={vote2}
+                      question={question}
+                      authed={authed}
+                      votes={votes}
+                      option="optionTwo"
+                      voted={voted}
+                      setVoted={setVoted}
+                    ></Vote>
+                  </div>
                   <div className="w-full flex items-center">
                     <button
                       className="bg-indigo-200 py-1 px-4 flex items-center gap-2 rounded-md text-indigo-800 font-semibold"
