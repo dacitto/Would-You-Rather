@@ -21,10 +21,9 @@ export const addAnswer = ({ qid, authedUser, answer }) => {
 };
 export const handleAnswer = (qid, answer, authedUser) => {
   return (dispatch) => {
-    return _saveQuestionAnswer({ qid, authedUser, answer }).then(() => {
-      dispatch(addAnswer({ qid, authedUser, answer }));
-      dispatch(addAnswerToUser({ qid, authedUser, answer }));
-    });
+    dispatch(addAnswer({ qid, authedUser, answer }));
+    dispatch(addAnswerToUser({ qid, authedUser, answer }));
+    return _saveQuestionAnswer({ qid, authedUser, answer }).then(() => {});
   };
 };
 export const addQuestion = (question) => {
