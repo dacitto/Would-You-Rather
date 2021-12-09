@@ -6,7 +6,8 @@ import Vote from "../components/Vote";
 const Question = () => {
   const navigate = useNavigate();
   const users = useSelector((state) => state.users);
-  const authed = JSON.parse(localStorage.getItem("authedUser"));
+  const authed = useSelector((state) => state.authedUser);
+  //const authed = JSON.parse(localStorage.getItem("authedUser"));
   const { id } = useParams();
   const [voted, setVoted] = useState(false);
   const questions = useSelector((state) => state.questions);

@@ -35,7 +35,7 @@ const Login = () => {
           onClick={() => {
             if (userID) {
               dispatch(setAuthedUser(userID));
-              localStorage.setItem("authedUser", JSON.stringify(userID));
+              //localStorage.setItem("authedUser", JSON.stringify(userID));
               navigate("/");
             }
           }}
