@@ -8,7 +8,7 @@ import PrivateRoute from "./navigation/PrivateRoute";
 import Login from "./pages/Login";
 const App = () => {
   const lastPathLocation = useLocation().pathname;
-  const [lastPath, setLastPath] = useState(lastPathLocation);
+  const [lastPath, setLastPath] = useState(useLocation().pathname);
   const dispatch = useDispatch();
   const authedUser = useSelector((state) => state.authedUser);
   useEffect(() => {
@@ -16,17 +16,9 @@ const App = () => {
     dispatch(handleInitialData());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, authedUser]);
+
   return (
     <Routes>
-      {/*routes.map((route) => (
-        <Route
-          key={route.id}
-          path={route.path}
-          element={
-            !authedUser ? route.component : <Navigate to={"/"} replace />
-          }
-        />
-        ))*/}
       <Route
         path="/login"
         element={

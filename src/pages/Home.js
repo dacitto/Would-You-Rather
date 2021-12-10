@@ -70,7 +70,7 @@ const Home = () => {
                     <h3>1- {question.optionOne.text}</h3>
                     <h3 className="mb-4">2- {question.optionTwo.text}</h3>
                     <Link
-                      to={`/question/${question.id}`}
+                      to={`/questions/${question.id}`}
                       className="capitalize w-full block text-center font-bold bg-indigo-50 hover:bg-green-400 hover:text-green-50 p-1 border-2 border-green-400 cursor-pointer rounded-md text-green-400"
                     >
                       view poll
