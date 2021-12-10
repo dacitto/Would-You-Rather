@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BiArrowBack } from "react-icons/bi";
 import Vote from "../components/Vote";
+
 const Question = () => {
   const navigate = useNavigate();
   const users = useSelector((state) => state.users);
@@ -16,11 +17,14 @@ const Question = () => {
   const vote2 = question ? question.optionTwo.votes.length : 0;
   const votes = vote1 + vote2;
 
+  useEffect(() => {
+    questions && !question && navigate("/NoFound");
+  }, [questions, question, navigate]);
   return (
     <main className="bg-white">
       <div className="container max-w-lg mx-auto p-5">
         <ul className="mx-auto max-w-lg  gap-3  flex flex-col ">
-          {question && (
+          {questions && question && (
             <li
               value={question.id}
               key={question.id}
@@ -72,7 +76,7 @@ const Question = () => {
                     <button
                       className="bg-indigo-200 py-1 px-4 flex items-center gap-2 rounded-md text-indigo-800 font-semibold"
                       onClick={() => {
-                        navigate(-1);
+                        navigate("/");
                       }}
                     >
                       <BiArrowBack />
@@ -84,7 +88,6 @@ const Question = () => {
               </div>
             </li>
           )}
-          {questions && !question && navigate("/NoFound")}
         </ul>
       </div>
     </main>

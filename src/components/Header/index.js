@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MyLink from "./MyLink";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,12 +13,16 @@ const Header = () => {
   const userInfos = useSelector((state) => state.users[authedUser]);
   const pathname = params.pathname;
   const Navigate = useNavigate();
+
   const paths = ["/", "/leaderboard", "/add"];
   const [active, setActive] = useState(
     paths.includes(pathname.toLocaleLowerCase())
       ? pathname.toLocaleLowerCase()
-      : "/"
+      : ""
   );
+  useEffect(() => {
+    setActive(pathname);
+  }, [pathname]);
   const Links = [
     { path: "/", name: "Home", icon: <BiHome /> },
     { path: "/leaderboard", name: "Leaders", icon: <BiCrown /> },
@@ -46,7 +50,7 @@ const Header = () => {
           <div>{userInfos ? userInfos.name.split(" ")[0] : ""}</div>
           <button
             onClick={() => {
-              // localStorage.clear();
+              localStorage.clear();
               dispatch(setAuthedUser(null));
               Navigate("/login");
             }}

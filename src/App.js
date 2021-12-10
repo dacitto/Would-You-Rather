@@ -1,25 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Header";
 import { handleInitialData } from "./actions/shared";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { routes, protectedRoutes } from "./navigation/routes";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { protectedRoutes } from "./navigation/routes";
 import PrivateRoute from "./navigation/PrivateRoute";
+import Login from "./pages/Login";
 const App = () => {
+  const lastPathLocation = useLocation().pathname;
+  const [lastPath, setLastPath] = useState(lastPathLocation);
   const dispatch = useDispatch();
   const authedUser = useSelector((state) => state.authedUser);
   useEffect(() => {
+    setLastPath(lastPathLocation);
     dispatch(handleInitialData());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, authedUser]);
   return (
     <Routes>
-      {routes.map((route) => (
+      {/*routes.map((route) => (
         <Route
           key={route.id}
           path={route.path}
-          element={!authedUser ? route.component : <Navigate to="/" replace />}
+          element={
+            !authedUser ? route.component : <Navigate to={"/"} replace />
+          }
         />
-      ))}
+        ))*/}
+      <Route
+        path="/login"
+        element={
+          !authedUser ? (
+            <Login lastPath={lastPath} />
+          ) : (
+            <Navigate
+              to={
+                lastPath.toLowerCase() === "/login"
+                  ? "/"
+                  : lastPath.toLowerCase()
+              }
+              replace
+            />
+          )
+        }
+      />
       :
       <>
         {protectedRoutes.map((route) => (

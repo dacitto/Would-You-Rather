@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { setAuthedUser } from "../actions/authedUser";
 import { useNavigate } from "react-router";
-const Login = () => {
+const Login = ({ lastPath }) => {
   const navigate = useNavigate();
   const users = useSelector((state) => state.users);
   const dispatch = useDispatch();
@@ -35,8 +35,11 @@ const Login = () => {
           onClick={() => {
             if (userID) {
               dispatch(setAuthedUser(userID));
-              //localStorage.setItem("authedUser", JSON.stringify(userID));
-              navigate("/");
+              // localStorage.setItem("authedUser", JSON.stringify(userID));
+
+              //navigate(-1);
+
+              navigate(lastPath.toLowerCase() === "/login" ? "/" : -1);
             }
           }}
           disabled={userID ? false : true}
