@@ -9,7 +9,7 @@ In your app, users will be able to answer questions, see which questions they ha
 ![](https://github.com/dacitto/Would-You-Rather/blob/main/readme/screenshot1.png)
 ![](https://github.com/dacitto/Would-You-Rather/blob/main/readme/screenshot2.png)
 
-# Technologies used in project
+# Technologies used in the project
 
 - React
   - react redux
